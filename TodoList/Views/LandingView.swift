@@ -10,7 +10,7 @@ import SwiftUI
 struct LandingView: View {
     
     // MARK: Stored Properties
-    
+    @State var newItemDescription = ""
     
     @State var searchText = ""
     
@@ -19,14 +19,14 @@ struct LandingView: View {
         
         NavigationView {
             
-            List {
-                ItemView(task: "Study for Chemistry quiz")
-                ItemView(task: "")
-                
-        
+            VStack {
+                List {
+                    ItemView(task: "Study for Chemistry quiz")
+                    ItemView(task: "Finish Computer science assignment")
+                    ItemView(task: "Go for a run around campus")
+                }
+                .searchable(text: $searchText)
             }
-            .searchable(text: $searchText)
-            
             .navigationTitle("To do")
         }
        

@@ -28,7 +28,7 @@ struct ItemView: View {
                 
             }
             .padding(.trailing, 10)
-    
+            
 
             
             Text(task)
