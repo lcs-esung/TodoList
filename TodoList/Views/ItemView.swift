@@ -8,8 +8,25 @@
 import SwiftUI
 
 struct ItemView: View {
+    
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        
+       
+        
+        ZStack {
+            Circle()
+                .foregroundColor(.blue)
+                .frame(height: 22)
+            
+            Circle()
+                .foregroundColor(.white)
+                .frame(height: 20)
+        }
+        
+        
+        
+       
     }
 }
 
