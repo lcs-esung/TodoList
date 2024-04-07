@@ -12,10 +12,24 @@ struct LandingView: View {
     // MARK: Stored Properties
     
     
+    @State var searchText = ""
     
     // MARK: Computed Properties
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        
+        NavigationView {
+            
+            List {
+                ItemView(task: "Study for Chemistry quiz")
+                ItemView(task: "")
+                
+        
+            }
+            .searchable(text: $searchText)
+            
+            .navigationTitle("To do")
+        }
+       
     }
 }
 

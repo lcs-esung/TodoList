@@ -8,14 +8,16 @@
 import SwiftUI
 
 struct ItemView: View {
-    
+    let task: String
     
     var body: some View {
         
        
         
         HStack {
+            
             ZStack {
+                
                 Circle()
                     .foregroundColor(.blue)
                     .frame(height: 22)
@@ -25,14 +27,15 @@ struct ItemView: View {
                     .frame(height: 20)
                 
             }
-            .padding()
+            .padding(.trailing, 10)
+    
+
             
-       
+            Text(task)
             
-            Text("Example")
-            
+            Spacer()
         }
-        .padding(.trailing)
+        
         
         
         
@@ -43,5 +46,5 @@ struct ItemView: View {
 }
 
 #Preview {
-    ItemView()
+    ItemView(task: "Study for Chemistry quiz")
 }
