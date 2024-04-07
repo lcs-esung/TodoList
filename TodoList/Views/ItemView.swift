@@ -14,15 +14,27 @@ struct ItemView: View {
         
        
         
-        ZStack {
-            Circle()
-                .foregroundColor(.blue)
-                .frame(height: 22)
+        HStack {
+            ZStack {
+                Circle()
+                    .foregroundColor(.blue)
+                    .frame(height: 22)
+                
+                Circle()
+                    .foregroundColor(.white)
+                    .frame(height: 20)
+                
+            }
+            .padding()
             
-            Circle()
-                .foregroundColor(.white)
-                .frame(height: 20)
+       
+            
+            Text("Example")
+            
         }
+        .padding(.trailing)
+        
+        
         
         
         
