@@ -37,6 +37,7 @@ struct LandingView: View {
                     Button("ADD") {
                         // Add the new to-do item
                     }
+                    .font(.caption)
                   
                 }
                 .padding(20)
