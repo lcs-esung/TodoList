@@ -24,25 +24,19 @@ struct LandingView: View {
                 
                 List {
                     
-                    Label(
-                        title: { 
-                            Text("Study for Chemistry quiz") },
-                        icon: { 
-                            Image(systemName: "circle") }
+                    ItemView(
+                        task: "Study for Chemistry quiz",
+                        done: false
                     )
                     
-                    Label(
-                        title: {
-                            Text("Finish Computer science assignment") },
-                        icon: { 
-                            Image(systemName: "circle") }
+                    ItemView(
+                        task: "Finish Computer Science assignment",
+                        done: true
                     )
                     
-                    Label(
-                        title: {  
-                            Text("Go for a run around campus")},
-                        icon: { 
-                            Image(systemName: "circle") }
+                    ItemView(
+                        task: "Go for a run around campus",
+                        done: false
                     )
                   
                     
@@ -67,4 +61,24 @@ struct LandingView: View {
 }
 #Preview {
     LandingView()
+}
+
+struct ItemView: View {
+    
+    let task: String
+    let done: Bool
+    
+    var body: some View {
+        Label(
+            title: {
+                Text(task)
+            }, icon: {
+                if done == true {
+                    Image(systemName: "checkmark.circle")
+                } else {
+                    Image(systemName: "circle")
+                }
+            }
+        )
+    }
 }
