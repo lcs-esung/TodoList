@@ -5,11 +5,13 @@
 //  Created by Edna Sung on 2024-04-05.
 //
 
+import SwiftData
 import SwiftUI
 
 struct LandingView: View {
     
     // MARK: Stored Properties
+    
     @State var newItemDescription = ""
     
     // The search text
@@ -19,7 +21,7 @@ struct LandingView: View {
     @Environment(\.modelContext) var modelContext
     
     // The list of to-do items
-    @State var todos: [TodoItem] = exampleItems
+    @Query var todos: [TodoItem]
     
     // MARK: Computed Properties
     var body: some View {
@@ -27,20 +29,13 @@ struct LandingView: View {
         NavigationView {
             
             VStack {
-                List($todos) { $todo in
-                    
-                    ItemView(currentItem: $todo)
-                    // Delete a to-do item
-                        .swipeActions{
-                            Button(
-                                "Delete" ,
-                                role: .destructive,
-                                action:  {
-                                    delete(todo)
-                                }
-                            )
-                        }
-                  
+                List {
+                    ForEach(todos) { todo in
+                        
+                        ItemView(currentItem: todo)
+
+                    }
+                    .onDelete(perform: removeRows)
                 }
                 .searchable(text: $searchText)
                 
@@ -69,15 +64,19 @@ struct LandingView: View {
             done: false
         )
         
-        // Append to the array
-        todos.append(todo)
+        // Use the model context to insert the new to-do
+        modelContext.insert(todo)
     }
     
-    func delete(_ todo: TodoItem) {
+    func removeRows(at offsets: IndexSet) {
         
-        // Remove the provided to-do item from the array
-        todos.removeAll { currentItem in
-            currentItem.id == todo.id
+        // Accept the offset within the list
+        // (the position of the item being deleted)
+        //
+        // Then ask the model context to delete this
+        // for us, from the 'todos' array
+        for offset in offsets {
+            modelContext.delete(todos[offset])
         }
     }
     
