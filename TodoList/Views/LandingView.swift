@@ -23,23 +23,9 @@ struct LandingView: View {
             VStack {
                 
                 List {
-                    
-                    ItemView(
-                        task: "Study for Chemistry quiz",
-                        done: false
-                    )
-                    
-                    ItemView(
-                        task: "Finish Computer Science assignment",
-                        done: true
-                    )
-                    
-                    ItemView(
-                        task: "Go for a run around campus",
-                        done: false
-                    )
-                  
-                    
+                    ItemView(currentItem: firstItem)
+                    ItemView(currentItem: secondItem)
+                    ItemView(currentItem: thirdItem)
                 }
                 .searchable(text: $searchText)
                 
