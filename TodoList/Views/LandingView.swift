@@ -45,19 +45,23 @@ struct LandingView: View {
                     Button("ADD") {
                         // Add the new to-do item
                         createToDo(withTitle: newItemDescription)
+                        
                     }
                     .font(.caption)
-                    .disabled(newItemDescription.isEmpty == true)
+                    .disabled(newItemDescription.isEmpty == true)   
+                
                 }
                 .padding(20)
             }
             .navigationTitle("To do")
+            .onAppear {
+                printCommandToOpenDatabaseFile()
+            }
         }
     }
     
     // MARK: Functions
     func createToDo(withTitle title: String) {
-        
         // Create the new to-do item instance
         let todo = TodoItem(
             title: title,
