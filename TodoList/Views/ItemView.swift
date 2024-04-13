@@ -5,6 +5,7 @@
 //  Created by Edna Sung on 2024-04-09.
 //
 
+import SwiftData
 import SwiftUI
 
 struct ItemView: View {
@@ -27,9 +28,14 @@ struct ItemView: View {
     }
 }
 
-//#Preview {
-//    List{
-//        ItemView(currentItem: Binding.constant(firstItem))
-//        ItemView(currentItem: Binding.constant(secondItem))
-//    }
-//}
+#Preview {
+    
+    let container = TodoItem.preview
+    
+    return List {
+        ItemView(currentItem: TodoItem.someItem)
+        ItemView(currentItem: TodoItem.anotherItem)
+    }
+    .modelContainer(container)
+    
+}
